@@ -4,7 +4,7 @@ import numpy as np
 MOUSE_POINT = []
 
 camera_matrix = np.array([[1423.100291, 0, 960.00], [0, 1423.100291, 540.00], [0, 0, 1]])
-dist_coeffs = np.array([-0.46-567, 0.233740, 0.010677, 0.001339])
+dist_coeffs = np.array([-0.460567, 0.233740, 0.010677, 0.001339])
 
 points_2D = np.array([
     (391, 454),

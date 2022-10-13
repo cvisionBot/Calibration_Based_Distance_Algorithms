@@ -1,29 +1,34 @@
 import cv2
 import numpy as np
 
+
 R = np.array([
-    [0.81189968, -0.58378633, -0.00352633],
-    [0.58376021,  0.81190152, -0.00631888],
-    [0.00655191,  0.00307177,  0.99997382]
+    [0.94572609, -0.00128113, -0.32496234],
+    [0.0938913,  -0.95626629, 0.27701843],
+    [-0.31110543, -0.2924947,  -0.90424569]
 ])
 
-u = (391 - 960) / 1423.100291
-v = (454 - 540) / 1423.100291
+t = np.array([[-23.42784994, -3.89708294, 53.57954617]]).T
 
-Pc = np.array([[u, v, 1]]).T
-t = np.array([[1.89418832e+07, 8.22605760e+06, 2.21427044e+08]]).T
 
-a = R
-b = (Pc - t)
+def calculate_distance(R, t, target_point):
+    u = (target_point[0] - 960) / 1423.10029
+    v = (target_point[1] - 540) / 1423.10029
 
-print('a b dot : ', np.dot(a, b))
+    Pc = np.array([[u, v, 1]]).T
+    
+    a = R
+    b = (Pc - t)
+    c = (-t)
 
-c = (-t)
+    t = t.T
 
-Pw = np.dot(a, b)
-Cw = np.dot(a, c)
-print('Pw : ', Pw)
-print('Cw : ', Cw)
-k = (-2.21570621e+08) / (-2.21570620e+08 - (-2.21570621e+08))
-P = Cw + k * (Pw-Cw)
-print('distance : ', P)
+    Pw = np.dot(a, b)
+    Cw = np.dot(a, c)
+    k = Cw[-1] / (Pw[-1] - Cw[-1])
+    P = Cw + k * (Pw-Cw)
+    print('distance : ', P[-1])
+
+
+if __name__ == "__main__":
+    calculate_distance(R, t, [391, 454])
