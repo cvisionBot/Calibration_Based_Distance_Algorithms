@@ -2,21 +2,22 @@
 Calculate distance using solvePnP (Perspective-n-Point) 
 
 ## Implementations
-- PC version Demo
-- Create SolvePnP, Rodrigues Algorithms
+- Calibration
+- SolvePnP, Rodrigues Algorithms
 - Calculate Distance Algorithms
 
 ## Project Architecture
+```
 Calibration_Based_Distance_Algorithms
-├─ Pc version Demo
+├─ calibration.py (calibration.h, calibration.c)
+├─ solvePnP_based.py
 ├─ .gitignore
 └─ README.md
+```
 
 ## Requirements
 `Python`
 `OpenCV`
-
-## Run PC version Algorithms
 
 ## TODOs
 - Math Metics Version Distance Algorithms
