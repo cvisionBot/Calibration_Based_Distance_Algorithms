@@ -37,8 +37,7 @@ def main():
 
     origin_image = cv2.imread('C:/Project_Tracker/calibration_image/0.jpg')
     origin_image = cv2.resize(origin_image, (resolution_w, resolution_h)) #ld
-    
-    
+    cv2.line(origin_image, (480, 270), (480, 270), red, 10)
     cv2.imshow("orgin_image", origin_image)
     cv2.waitKey(0)
 
