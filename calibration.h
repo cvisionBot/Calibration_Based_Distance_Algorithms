@@ -40,9 +40,12 @@ extern "C"
 {
 #endif
     // calibration stream func
-    HD_RESULT calibration_init(double fx, double fy, double cx, double cy, double k1, double k2, double p1, double p2);
-    HD_RESULT calibration_uninit(void);
-    HD_RESULT calibration(VIDEO_LIVEVIEW *lv);
+    HD_RESULT calibration_init(Cam_Matrix cam_mat, Dis_Coeffs dis_ceo, double fx, double fy, double cx, double cy, double k1, double k2, double p1, double p2);
+    HD_RESULT calibration_uninit(unsigned char* calib_source);
+    HD_RESULT calibration(unsigned char* source, int width, int height);
+
+    // calcuarate center point working distance
+    HD_RESULT calcurate_center_distance(unsigned char* calib_source, int res_w, int res_h, double Lens, double Focal_length, double FoV);
 
     // in calibration func
     HD_RESULT Normalize(double &x, double &y);
